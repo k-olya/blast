@@ -1,4 +1,4 @@
-import { Game } from "classes/game";
+import { Game } from "modules/game";
 
 const el = document.getElementById("loading");
 

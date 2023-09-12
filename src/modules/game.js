@@ -1,4 +1,4 @@
-import { Loading } from "classes/loading";
+import { Loading } from "modules/loading";
 
 const currentScene = "loading";
 
