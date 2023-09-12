@@ -1,9 +1,11 @@
-export class Game {
-  static SCENE_ENUM = ["loading", "playing", "gameover"];
+import { Loading } from "classes/loading";
 
-  scenes = { loading: undefined, playing: undefined, gameover: undefined };
+const currentScene = "loading";
 
-  constructor() {
-    console.log("initializing game...");
-  }
-}
+const setup = () => {
+  console.log("initializing game...");
+  Loading.setup();
+};
+
+export const SCENE_ENUM = ["loading", "playing", "gameover"];
+export const Game = { setup };
