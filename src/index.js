@@ -1,3 +1,4 @@
+import { Game } from "classes/game";
 import "./index.css";
 
-console.log("Hello World!");
+new Game();
