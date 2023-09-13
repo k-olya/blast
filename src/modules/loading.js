@@ -1,9 +1,11 @@
 import { Game } from "modules/game";
+import { emit } from "ev";
 
 const el = document.getElementById("loading");
 
 const onload = () => {
   el.style.display = "none";
+  emit("load");
 };
 
 const setup = () => {
