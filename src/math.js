@@ -28,7 +28,7 @@ export function fract(x) {
 
 // get random integer in the range [0, x)
 export function irand(x) {
-  Math.floor(Math.random() * x);
+  return Math.floor(Math.random() * x);
 }
 // get random number in the range [a, b)
 export function rand(a, b) {
