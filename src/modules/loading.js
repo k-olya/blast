@@ -1,3 +1,5 @@
+// loading manager
+// listens for the browser "load" event and hides the corresponding DOM
 import { Game } from "modules/game";
 import { emit } from "ev";
 

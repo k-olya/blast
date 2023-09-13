@@ -1,3 +1,4 @@
+// in MVC term, this module represents the game's Model
 const N = 9;
 const M = 10;
 const C = 5;
