@@ -7,8 +7,13 @@ const C = 5;
 
 let field;
 
+const printNicely = () => {
+  const s = field.reduce((acc, v, i) => acc + ((i + 1) % N ? v : `${v}\n`), "");
+  console.log(s);
+};
+
 const setup = () => {
-  console.log(`setting up gameplay for an ${N} by ${M} field`);
+  console.log(`setting up gameplay for a ${N} by ${M} field`);
   field = new Uint8Array(len);
 
   // generate game field
@@ -17,6 +22,7 @@ const setup = () => {
     // with 0 signifying empty space
     field[i] = irand(C) + 1;
   }
+  printNicely();
 };
 
 const teardown = () => {};
