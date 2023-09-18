@@ -140,6 +140,16 @@ const removeCells = group => {
   }
 };
 
+// function that makes items fall into place
+const fillFieldWithPillars = pillars => {
+  for (let p of pillars) {
+    const { x, y, height, content } = p;
+    for (let j = 0, l = content.length; j < l; j++) {
+      set(field, x, y + l - 1 + height - j, content[j]);
+    }
+  }
+};
+
 window.makeTurn = (x, y) => {
   const { group, k } = findKGroup(x, y);
   printNicely(group);
@@ -161,6 +171,13 @@ window.makeTurn = (x, y) => {
   // tell renderer to queue fall animation
   emit("falling", pillars);
   console.log(pillars);
+  // fill empty field space
+  fillFieldWithPillars(pillars);
+  printNicely(field);
+  // push field state to the renderer
+  emit("field", field);
+  // end turn
+  emit("end-turn");
 };
 
 const setup = () => {
