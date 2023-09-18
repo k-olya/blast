@@ -10,6 +10,7 @@ export const on = (ev, cb) => {
 };
 export const emit = (ev, ...a) => {
   let cbs = events[ev] || [];
+  console.log("event", ev);
   for (let i = 0, l = cbs.length; i < l; i++) {
     cbs[i](...a);
   }
