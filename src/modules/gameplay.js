@@ -43,6 +43,10 @@ const findKGroup = (x, y) => {
   // k is a counter for adjacent items
   let k = 1;
   set(Kgroup, x, y, 1);
+
+  // js engines don't have tail-call optimizations
+  // so we're going to have to use a stack-based algorithm
+
   // place directly adjacent cells to the processing stack
   // but only if they contain the necessary value
   let stack = adjacents
@@ -51,7 +55,6 @@ const findKGroup = (x, y) => {
   // use for from 0 to a very large number instead of while
   for (let i = 0; i < 0x7fffffff && stack.length; i++) {
     const [currentX, currentY] = stack.pop();
-    const currentValue = get(field, currentX, currentY);
     if (get(Kgroup, currentX, currentY) === 0) {
       // inc the counter
       k++;
