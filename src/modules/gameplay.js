@@ -10,6 +10,7 @@ const K = 2;
 
 let field;
 let group;
+let score;
 
 // get value at (x, y) in field f
 const get = (f, x, y) => f[clamp(y, 0, M - 1) * N + clamp(x, 0, N - 1)];
@@ -124,7 +125,7 @@ const getPillars = group => {
   return pillars;
 };
 
-// remove blasted and moving cells
+// remove blasted and falling cells
 const removeCells = group => {
   for (let i = 0; i < N; i++) {
     // go from top to bottom
@@ -148,6 +149,11 @@ const fillFieldWithPillars = pillars => {
       set(field, x, y + l - 1 + height - j, content[j]);
     }
   }
+};
+
+// calculate score
+const updateScore = k => {
+  score += Math.round(Math.pow(2, k));
 };
 
 window.makeTurn = (x, y) => {
@@ -176,6 +182,10 @@ window.makeTurn = (x, y) => {
   printNicely(field);
   // push field state to the renderer
   emit("field", field);
+  // update score
+  updateScore(k);
+  emit("score", score);
+  console.log("score", score);
   // end turn
   emit("end-turn");
 };
@@ -194,6 +204,9 @@ const setup = () => {
   // for the renderer to handle
   emit("field", field);
   printNicely(field);
+  // set score to zero
+  score = 0;
+  emit("score", 0);
 };
 
 const teardown = () => {};
